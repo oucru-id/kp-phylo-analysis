@@ -1,6 +1,7 @@
 # KP FHIR Phylogeny Analysis Pipeline
 
-This pipeline processes FHIR bundle JSON files containing Klebsiella pneumoniae genomics data to generate cgMLST matrices and phylogenetic trees.
+This pipeline processes FHIR bundle JSON files containing Klebsiella pneumoniae genomics data to generate cgMLST matrices and phylogenetic trees. Please refer to our full documentation: https://kp-pipeline-docs.readthedocs.io/en/latest/
+
 
 ## Features
 
