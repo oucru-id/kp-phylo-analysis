@@ -86,7 +86,7 @@ def parse_fhir(file_path):
 
                 is_cgmlst = False
                 for coding in code_obj.get('coding', []):
-                    if coding.get('code') == '95643-1':
+                    if coding.get('code') == 'SP000682':
                         is_cgmlst = True
                         break
                 
@@ -98,11 +98,14 @@ def parse_fhir(file_path):
                         if 'valueQuantity' in comp: continue
 
                         locus_name = f"Locus_{i+1}"
-                        if 'code' in comp:
-                            if 'coding' in comp['code'] and len(comp['code']['coding']) > 0:
-                                locus_name = comp['code']['coding'][0].get('code', locus_name)
-                            elif 'text' in comp['code']:
-                                locus_name = comp['code']['text']
+                        
+                        code_obj = comp.get('code')
+                        if code_obj:
+                            codings = code_obj.get('coding', [])
+                            if codings and len(codings) > 0:
+                                locus_name = codings[0].get('code', locus_name)
+                            elif code_obj.get('text'):
+                                locus_name = code_obj.get('text')
                         
                         val = comp.get('valueString', '-')
                         if val in ['NA', '', 'LNF', 'NIPH', 'ALM', 'NIPHEM']:
